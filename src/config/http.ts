@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { parseCookies } from "nookies";
 
-const { "Gerenciador de Serviços.token": token } = parseCookies();
+const { "service-manager.token": token } = parseCookies();
 
 export const http = axios.create({
   baseURL: "http://localhost:3000",

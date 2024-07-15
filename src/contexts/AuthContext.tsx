@@ -47,7 +47,7 @@ export function AuthProvider({ children }: AuthProviderType) {
 
     setUser(user);
 
-    setCookie(undefined, "Gerenciador de Serviços.token", token, {
+    setCookie(undefined, "service-manager.token", token, {
       maxAge: 60 * 60 * 1, //1 hour
     });
 
@@ -71,13 +71,13 @@ export function AuthProvider({ children }: AuthProviderType) {
   }
 
   async function signOut() {
-    destroyCookie(undefined, "Gerenciador de Serviços.token");
+    destroyCookie(undefined, "service-manager.token");
     setUser(null);
     router.push("/sign-in");
   }
 
   async function loadStoragedData() {
-    const { "Gerenciador de Serviços.token": token } = parseCookies();
+    const { "service-manager.token": token } = parseCookies();
 
     if (!token) {
       setLoading(false);
@@ -90,7 +90,7 @@ export function AuthProvider({ children }: AuthProviderType) {
 
     setUser(renewedUser);
 
-    setCookie(undefined, "Gerenciador de Serviços.token", renewedToken, {
+    setCookie(undefined, "service-manager.token", renewedToken, {
       maxAge: 60 * 60 * 1, //1 hour
     });
 

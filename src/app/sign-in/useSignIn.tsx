@@ -23,7 +23,7 @@ export const useSignIn = () => {
 
       await delay(5000);
 
-      router.push("/Gerenciador de Serviços");
+      router.push("/service-manager");
     } catch (error) {
       alert("erro");
     }
