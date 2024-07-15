@@ -96,7 +96,7 @@ export function AuthProvider({ children }: AuthProviderType) {
 
     http.defaults.headers.token = token;
 
-    router.push("/Gerenciador de Serviços");
+    router.push("/service-manager");
   }
 
   useEffect(() => {
