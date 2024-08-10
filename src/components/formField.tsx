@@ -5,6 +5,7 @@ import {
   InputMask,
   InputNumber,
   InputPassword,
+  InputRadio,
   InputSelect,
   InputText,
 } from "./input";
@@ -18,10 +19,19 @@ export type OptionType = {
 export type FormFieldType = {
   label: string;
   name: string;
-  type: "date" | "email" | "number" | "password" | "select" | "text" | "tel";
+  type:
+    | "date"
+    | "email"
+    | "number"
+    | "password"
+    | "select"
+    | "text"
+    | "tel"
+    | "radio";
   mask?: string;
   placeholder?: string;
   options?: OptionType[];
+  dependencies?: Array<string>;
   required?: boolean;
   size?: "small" | "average" | "big";
   inputFirstIcon?: IconType;
@@ -35,6 +45,7 @@ export const FormField = ({
   mask,
   placeholder,
   options,
+  dependencies,
   required = false,
   size = "average",
   inputFirstIcon,
@@ -110,6 +121,14 @@ export const FormField = ({
           required={required}
           size={size}
           options={options}
+        />
+      )}
+      {type === "radio" && options?.length && (
+        <InputRadio
+          name={name}
+          required={required}
+          options={options}
+          dependencies={dependencies}
         />
       )}
     </div>

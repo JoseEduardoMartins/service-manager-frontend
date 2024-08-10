@@ -9,38 +9,47 @@ import {
   FaUserFriends,
 } from "react-icons/fa";
 
-export const useSideBar = () => {
+type UseSideBarType = {
+  isOpened: boolean;
+};
+
+export const useSideBar = ({ isOpened }: UseSideBarType) => {
   const router = useRouter();
   const pathname = usePathname();
   const { signOut } = useContext(AuthContext);
 
   const menuItems = [
     {
-      text: "Dashboard",
-      isActive: pathname === "/service-manager",
+      label: "Dashboard",
+      isActived: pathname === "/service-manager",
+      isOpened,
       method: () => router.push("/service-manager/"),
       icon: FaTachometerAlt,
     },
     {
-      text: "Contabilidade",
-      isActive: pathname === "/service-manager/accounting",
+      label: "Contabilidade",
+      isActived: pathname === "/service-manager/accounting",
+      isOpened,
       method: () => router.push("/service-manager/accounting"),
       icon: FaCalculator,
     },
     {
-      text: "Clientes",
-      isActive: pathname === "/service-manager/customers",
+      label: "Clientes",
+      isActived: pathname === "/service-manager/customers",
+      isOpened,
       method: () => router.push("/service-manager/customers"),
       icon: FaUserFriends,
     },
     {
-      text: "Serviços",
-      isActive: pathname === "/service-manager/services",
+      label: "Serviços",
+      isActived: pathname === "/service-manager/services",
+      isOpened,
       method: () => router.push("/service-manager/services"),
       icon: FaTools,
     },
     {
-      text: "Sair",
+      label: "Sair",
+      isOpened,
       method: () => signOut(),
       icon: FaSignOutAlt,
     },

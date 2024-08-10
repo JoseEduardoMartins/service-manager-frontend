@@ -1,15 +1,26 @@
 "use client";
 
+import { Header } from "@/components/header";
 import { SideBar } from "@/components";
 import { ServiceManagerLayoutType } from "./types";
+import { useState } from "react";
 
 const ServiceManagerLayout = ({ children }: ServiceManagerLayoutType) => {
+  const [isOpened, setIsOpened] = useState<boolean>(false);
+
   return (
-    <main className="w-full min-h-screen p-8 flex flex-row gap-8">
-      <div className="basis-1/5 border">
-        <SideBar />
+    <main className="min-w-screen max-w-screen min-h-screen max-h-screen flex flex-col">
+      <Header />
+      <div className="w-full h-screen flex flex-row">
+        <div
+          className="border-r border-gray-400 p-3"
+          onMouseEnter={() => setIsOpened(true)}
+          onMouseLeave={() => setIsOpened(false)}
+        >
+          <SideBar isOpened={isOpened} />
+        </div>
+        <div className="basis-full">{children}</div>
       </div>
-      <div className="basis-4/5 border">{children}</div>
     </main>
   );
 };

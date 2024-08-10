@@ -3,11 +3,7 @@
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-
-export type OptionType = {
-  label: string;
-  value: string;
-};
+import { OptionType } from "../formField";
 
 export type InputSelectType = {
   name: string;

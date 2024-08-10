@@ -11,6 +11,7 @@ export type User = {
 };
 
 export type SignInType = {
+  userType: "provider" | "receiver";
   email: string;
   password: string;
 };

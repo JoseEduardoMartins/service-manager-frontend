@@ -19,6 +19,16 @@ const SignIn = () => {
             </h2>
             <Form methods={methods} handleSubmit={handleSubmit}>
               <FormField
+                label="Tipo de usuario"
+                name="userType"
+                type="radio"
+                required={true}
+                options={[
+                  { label: "Empresa", value: "provider" },
+                  { label: "Cliente", value: "receiver" },
+                ]}
+              />
+              <FormField
                 label="E-mail"
                 name="email"
                 type="email"
