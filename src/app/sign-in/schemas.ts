@@ -1,7 +1,9 @@
 import { z } from "zod";
 
 export const signInSchema = z.object({
-  userType: z.enum(["provider", "receiver"]),
+  userType: z.enum(["provider", "receiver"], {
+    message: "Campo de preenchimento obrigatório",
+  }),
   email: z
     .string({
       message: "Campo de preenchimento obrigatório",

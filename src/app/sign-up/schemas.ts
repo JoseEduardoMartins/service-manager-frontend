@@ -1,4 +1,4 @@
-import { formatPhone } from "@/utils/formatters/number-formatter";
+import { formatPhone } from "@/common/formatters/number-formatter";
 import { z } from "zod";
 
 export const signUpSchema = z.object({
@@ -24,6 +24,7 @@ export const signUpSchema = z.object({
     .min(17, "Campo precisa de no minimo 17 caracters")
     .max(19, "Campo pode ter no maximo 19 caracteres")
     .refine((value) => formatPhone(value)),
+  userType: z.enum(["provider", "receiver"]),
   taxId: z.string({
     message: "Campo de preenchimento obrigatório",
   }),

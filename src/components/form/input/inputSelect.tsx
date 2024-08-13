@@ -5,7 +5,7 @@ import { useFormContext } from "react-hook-form";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { OptionType } from "../formField";
 
-export type InputSelectType = {
+type InputSelectType = {
   name: string;
   options: OptionType[];
   required?: boolean;

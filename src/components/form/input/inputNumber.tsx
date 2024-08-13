@@ -1,7 +1,7 @@
 import { useFormContext } from "react-hook-form";
 import { IconType } from "react-icons";
 
-export type InputNumberType = {
+type InputNumberType = {
   name: string;
   placeholder?: string;
   required?: boolean;

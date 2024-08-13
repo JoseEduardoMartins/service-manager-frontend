@@ -1,9 +1,8 @@
 "use client";
 
-import { Header } from "@/components/header";
-import { SideBar } from "@/components";
-import { ServiceManagerLayoutType } from "./types";
+import { Header, SideBar } from "@/components";
 import { useState } from "react";
+import { ServiceManagerLayoutType } from "./types";
 
 const ServiceManagerLayout = ({ children }: ServiceManagerLayoutType) => {
   const [isOpened, setIsOpened] = useState<boolean>(false);

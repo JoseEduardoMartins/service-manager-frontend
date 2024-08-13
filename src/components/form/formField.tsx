@@ -16,7 +16,7 @@ export type OptionType = {
   value: string;
 };
 
-export type FormFieldType = {
+type FormFieldType = {
   label: string;
   name: string;
   type:

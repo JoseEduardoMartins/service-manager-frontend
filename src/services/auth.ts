@@ -1,14 +1,5 @@
 import { http } from "../config/http";
-
-export type User = {
-  id: number;
-  name: string;
-  birthdate: string;
-  phone: string;
-  taxId: string;
-  email: string;
-  password: string;
-};
+import { User } from "./user";
 
 export type SignInType = {
   userType: "provider" | "receiver";

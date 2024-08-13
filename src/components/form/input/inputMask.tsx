@@ -1,8 +1,8 @@
-import { applyMask } from "@/utils/formatters/string-formatter";
+import { applyMask } from "@/common/formatters/string-formatter";
 import { useFormContext } from "react-hook-form";
 import { IconType } from "react-icons";
 
-export type InputMaskType = {
+type InputMaskType = {
   name: string;
   type: string;
   mask: string; //ex: ####-## || +## (##) #####-#### || ###.###.###-##

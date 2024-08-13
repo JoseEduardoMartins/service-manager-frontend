@@ -1,14 +1,13 @@
-import { useFormContext } from "react-hook-form";
-import { IconType } from "react-icons";
+"use client";
 
-export type InputTextType = {
+import { useState } from "react";
+import { useFormContext } from "react-hook-form";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+
+type InputPasswordType = {
   name: string;
-  type?: "text" | "email";
-  placeholder?: string;
   required?: boolean;
   size?: "small" | "average" | "big";
-  firstIcon?: IconType;
-  lastIcon?: IconType;
 };
 
 const sizeClass = {
@@ -17,15 +16,18 @@ const sizeClass = {
   big: " mt-1 p-8 max-h-18",
 };
 
-export const InputText = ({
+export const InputPassword = ({
   name,
-  type = "text",
-  placeholder,
   required = false,
   size = "average",
-  ...props
-}: InputTextType) => {
+}: InputPasswordType) => {
   const { register } = useFormContext();
+
+  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
+
+  const handleInputType = () => {
+    setIsVisiblePassword(!isVisiblePassword);
+  };
 
   return (
     <div
@@ -40,22 +42,26 @@ export const InputText = ({
         ${sizeClass[size]}  
       `}
     >
-      {props.firstIcon && (
-        <div className="flex text-gray-600">
-          <props.firstIcon className="cursor-pointer size-6" />
-        </div>
-      )}
       <input
         className="w-full border-0 bg-transparent outline-0"
-        type={type}
-        placeholder={placeholder}
+        type={isVisiblePassword ? "text" : "password"}
         {...register(name, {
           required,
         })}
       />
-      {props.lastIcon && (
+      {isVisiblePassword ? (
         <div className="flex text-gray-600">
-          <props.lastIcon className="cursor-pointer size-6" />
+          <FaEye
+            className="cursor-pointer size-6"
+            onClick={() => handleInputType()}
+          />
+        </div>
+      ) : (
+        <div className="flex text-gray-600">
+          <FaEyeSlash
+            className="cursor-pointer size-6"
+            onClick={() => handleInputType()}
+          />
         </div>
       )}
     </div>

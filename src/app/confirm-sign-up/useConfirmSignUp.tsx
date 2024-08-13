@@ -1,5 +1,5 @@
 import { AuthContext } from "@/contexts/AuthContext";
-import { delay } from "@/utils/delay-utils";
+import { delay } from "@/common/delay-utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useContext } from "react";

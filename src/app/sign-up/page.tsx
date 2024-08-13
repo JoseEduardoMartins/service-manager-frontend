@@ -16,6 +16,16 @@ const SignUp = () => {
           <div className="flex flex-col gap-y-4">
             <h2 className="text-white text-xl font-bold ">Criar sua conta</h2>
             <Form methods={methods} handleSubmit={handleSubmit}>
+              <FormField
+                label="Tipo de usuario"
+                name="userType"
+                type="radio"
+                required={true}
+                options={[
+                  { label: "Empresa", value: "provider" },
+                  { label: "Cliente", value: "receiver" },
+                ]}
+              />
               <FormField label="Nome" name="name" type="text" required={true} />
               <FormField
                 label="Data de Nascimento"
@@ -30,10 +40,21 @@ const SignUp = () => {
                 required={true}
               />
               <FormField
-                label="Cpf"
+                label={
+                  methods.watch("userType") === "provider" ? "Cnpj" : "Cpf"
+                }
                 name="taxId"
                 type="text"
-                mask="###.###.###-##"
+                mask={
+                  methods.watch("userType") === "provider"
+                    ? "##.###.###/####-##"
+                    : "###.###.###-##"
+                }
+                placeholder={
+                  methods.watch("userType") === "provider"
+                    ? "00.000.000/0000-00"
+                    : "000.000.000-00"
+                }
                 required={true}
               />
               <FormField

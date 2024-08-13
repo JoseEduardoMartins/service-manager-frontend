@@ -9,7 +9,7 @@ import {
   SignUpType,
   confirmSignUpRequest,
   recoverUserImformation,
-} from "@/services/auth";
+} from "@/services";
 import { useRouter } from "next/navigation";
 import { destroyCookie, setCookie, parseCookies } from "nookies";
 import { ReactNode, createContext, useEffect, useState } from "react";

@@ -1,6 +1,6 @@
 import { useFormContext } from "react-hook-form";
 
-export type InputDateType = {
+type InputDateType = {
   name: string;
   required?: boolean;
   size?: "small" | "average" | "big";

@@ -1,13 +1,14 @@
-"use client";
-
-import { useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { IconType } from "react-icons";
 
-export type InputPasswordType = {
+type InputTextType = {
   name: string;
+  type?: "text" | "email";
+  placeholder?: string;
   required?: boolean;
   size?: "small" | "average" | "big";
+  firstIcon?: IconType;
+  lastIcon?: IconType;
 };
 
 const sizeClass = {
@@ -16,18 +17,15 @@ const sizeClass = {
   big: " mt-1 p-8 max-h-18",
 };
 
-export const InputPassword = ({
+export const InputText = ({
   name,
+  type = "text",
+  placeholder,
   required = false,
   size = "average",
-}: InputPasswordType) => {
+  ...props
+}: InputTextType) => {
   const { register } = useFormContext();
-
-  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
-
-  const handleInputType = () => {
-    setIsVisiblePassword(!isVisiblePassword);
-  };
 
   return (
     <div
@@ -42,26 +40,22 @@ export const InputPassword = ({
         ${sizeClass[size]}  
       `}
     >
+      {props.firstIcon && (
+        <div className="flex text-gray-600">
+          <props.firstIcon className="cursor-pointer size-6" />
+        </div>
+      )}
       <input
         className="w-full border-0 bg-transparent outline-0"
-        type={isVisiblePassword ? "text" : "password"}
+        type={type}
+        placeholder={placeholder}
         {...register(name, {
           required,
         })}
       />
-      {isVisiblePassword ? (
+      {props.lastIcon && (
         <div className="flex text-gray-600">
-          <FaEye
-            className="cursor-pointer size-6"
-            onClick={() => handleInputType()}
-          />
-        </div>
-      ) : (
-        <div className="flex text-gray-600">
-          <FaEyeSlash
-            className="cursor-pointer size-6"
-            onClick={() => handleInputType()}
-          />
+          <props.lastIcon className="cursor-pointer size-6" />
         </div>
       )}
     </div>
