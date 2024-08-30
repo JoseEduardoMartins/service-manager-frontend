@@ -1,20 +1,25 @@
-import { List } from "@/components";
+import { Table } from "@/components";
+import { Page } from "@/components/page";
 
 export default function Services() {
-  const headerList = [
+  const colums = [
     {
+      key: "name",
       label: "Nome",
-      value: "name",
     },
     {
+      key: "recommendedPrice",
       label: "Preço Remendado",
-      value: "recommendedPrice",
+    },
+    {
+      key: "action",
+      label: "Ações",
     },
   ];
 
   return (
-    <div className="w-full h-full p-8">
-      <List title={"Seus Serviços"} headerList={headerList} />
-    </div>
+    <Page>
+      <Table title="Serviços" colums={colums} rows={[]} />
+    </Page>
   );
 }

@@ -1,3 +1,9 @@
+import { Page } from "@/components";
+
 export default function Customers() {
-  return <div className="w-full"></div>;
+  return (
+    <Page title="Clientes">
+      <></>
+    </Page>
+  );
 }

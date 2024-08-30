@@ -2,6 +2,7 @@
 
 import { AuthContext } from "@/contexts/AuthContext";
 import { usePathname, useRouter } from "next/navigation";
+import { Icon } from "../icon";
 import { useContext } from "react";
 import {
   FaCalculator,
@@ -26,34 +27,34 @@ export const useSideBar = ({ isOpened }: UseSideBarType) => {
       isActived: pathname === "/service-manager",
       isOpened,
       method: () => router.push("/service-manager/"),
-      icon: FaTachometerAlt,
+      icon: <Icon name="dashboard" />,
     },
     {
       label: "Contabilidade",
       isActived: pathname === "/service-manager/accounting",
       isOpened,
       method: () => router.push("/service-manager/accounting"),
-      icon: FaCalculator,
+      icon: <Icon name="accounting" />,
     },
     {
       label: "Clientes",
       isActived: pathname === "/service-manager/customers",
       isOpened,
       method: () => router.push("/service-manager/customers"),
-      icon: FaUserFriends,
+      icon: <Icon name="customers" />,
     },
     {
       label: "Serviços",
       isActived: pathname === "/service-manager/services",
       isOpened,
       method: () => router.push("/service-manager/services"),
-      icon: FaTools,
+      icon: <Icon name="services" />,
     },
     {
       label: "Sair",
       isOpened,
       method: () => signOut(),
-      icon: FaSignOutAlt,
+      icon: <Icon name="exit" />,
     },
   ];
 

@@ -1,11 +1,13 @@
-import { useFormContext } from 'react-hook-form';
-import { IoIosWarning } from 'react-icons/io';
+"use client";
+
+import { useFormContext } from "react-hook-form";
+import { IoIosWarning } from "react-icons/io";
 
 export type FormFieldErrorType = { name: string };
 
 export const FormFieldError = ({ name }: FormFieldErrorType) => {
   const {
-    formState: { errors }
+    formState: { errors },
   } = useFormContext();
 
   return (

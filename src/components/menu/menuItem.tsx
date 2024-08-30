@@ -1,11 +1,9 @@
-import { IconType } from "react-icons";
-
-export type MenuItemType = {
+export type MenuItemProps = {
   label: string;
   isActived?: boolean;
   isOpened?: boolean;
   method: () => void;
-  icon: IconType;
+  icon: JSX.Element;
 };
 
 export const MenuItem = ({
@@ -14,7 +12,7 @@ export const MenuItem = ({
   isOpened = false,
   method,
   ...rest
-}: MenuItemType) => (
+}: MenuItemProps) => (
   <div
     className={
       isActived
@@ -27,7 +25,7 @@ export const MenuItem = ({
       className="w-full flex items-center gap-4 p-3 rounded-lg"
       onClick={method}
     >
-      <rest.icon className="text-emerald-500 size-6" />
+      {rest.icon}
       {isOpened && <p className="text-base">{label}</p>}
     </button>
   </div>
